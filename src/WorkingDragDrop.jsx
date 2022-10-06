@@ -1,12 +1,8 @@
-import './App.css'
+import React from 'react'
 import { useState } from 'react'
 import Papa from 'papaparse'
-import { DropzoneArea } from 'material-ui-dropzone'
-import ReactDrop from './components/React-Drop'
-import Try from './components/try'
 
-function App() {
-  // State to store parsed data
+function WorkingDragDrop() {
   const [parsedData, setParsedData] = useState([])
 
   //State to store table Column name
@@ -41,13 +37,9 @@ function App() {
       },
     })
   }
-
   return (
-    <div>
-      {/* <ReactDrop /> */}
-      <Try />
-      {/* File Uploader */}
-      {/* <input
+    <>
+      <input
         type="file"
         name="file"
         onChange={changeHandler}
@@ -55,10 +47,11 @@ function App() {
         style={{ display: 'block', margin: '10px auto' }}
       />
       <br />
-      <br /> */}
+      <br />
+      <h3>Filters</h3>
 
       {/* Table */}
-      {/* <table>
+      <table>
         <thead>
           <tr>
             {tableRows.map((rows, index) => {
@@ -77,9 +70,9 @@ function App() {
             )
           })}
         </tbody>
-      </table> */}
-    </div>
+      </table>
+    </>
   )
 }
 
-export default App
+export default WorkingDragDrop
