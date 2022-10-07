@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { DropzoneArea } from 'material-ui-dropzone'
-import '../App.css'
+
 import Papa from 'papaparse'
 
 const SimpleDrop = () => {
@@ -10,7 +10,7 @@ const SimpleDrop = () => {
   const [tableRows, setTableRows] = useState([])
   const [values, setValues] = useState([])
 
-  const [delimiter, setDelimiter] = useState('')
+  const [delimiter, setDelimiter] = useState(',')
   console.log(delimiter)
   const [rows, setRows] = useState(4)
   const [globalFile, setGlobalFile] = useState()
@@ -73,16 +73,21 @@ const SimpleDrop = () => {
     setRows(parseInt(e.target.value))
   }
   return (
-    <div className="drop-zone">
-      <DropzoneArea
-        acceptedFiles={['text/*']}
-        onChange={handleChange.bind(this)}
-        showFileNames
-        dropzoneText="Drop File Here"
-        showAlerts={false}
-        filesLimit={1}
-        onDrop={onDrop}
-      />
+    <div>
+      <div className="drop-zone">
+        <DropzoneArea
+          acceptedFiles={['.txt', '.csv']}
+          onChange={handleChange.bind(this)}
+          showFileNames
+          dropzoneText="Drop File Here"
+          showAlerts={false}
+          filesLimit={1}
+          onDrop={onDrop}
+          dropzoneProps={{ noClick: true }}
+        />
+      </div>
+      <br />
+      <br />
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">
           Delimeter
@@ -97,23 +102,22 @@ const SimpleDrop = () => {
           onChange={onDelimiterChange}
         />
       </div>
+
       <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">
           Rows
         </span>
         <input
-          type="text"
+          type="number"
           class="form-control"
-          placeholder="Delimiter"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
+          placeholder="Enter a number"
           value={rows}
           onChange={onRowChange}
         />
       </div>
 
       <h4>Table Loading</h4>
-      <table className="table table-hover border">
+      <table className="table table-striped table-hover table-bordered">
         <thead>
           {/* <tr>
             {tableRows.slice(0, rows)?.map((rows, index) => {
