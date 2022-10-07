@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { DropzoneArea } from 'material-ui-dropzone'
 import '../App.css'
 import Papa from 'papaparse'
-import CircularProgress from '@mui/material/CircularProgress'
-import Box from '@mui/material/Box'
 
 const SimpleDrop = () => {
   const [files, setFiles] = useState([])
@@ -16,7 +14,6 @@ const SimpleDrop = () => {
   console.log(delimiter)
   const [rows, setRows] = useState(4)
   const [globalFile, setGlobalFile] = useState()
-  const [isLoading, setIsLoading] = useState(false)
 
   const onDelimiterChange = (event) => {
     console.log(event.target.value)
@@ -86,17 +83,37 @@ const SimpleDrop = () => {
         filesLimit={1}
         onDrop={onDrop}
       />
-      <label>Delimeter</label>
-      <input type="text" value={delimiter} onChange={onDelimiterChange} />
-      <label>Row</label>
-      <input type="number" value={rows} onChange={onRowChange} />
-      {isLoading && (
-        <Box sx={{ display: 'flex' }}>
-          <CircularProgress />
-        </Box>
-      )}
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          Delimeter
+        </span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Delimiter"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          value={delimiter}
+          onChange={onDelimiterChange}
+        />
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">
+          Rows
+        </span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Delimiter"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+          value={rows}
+          onChange={onRowChange}
+        />
+      </div>
+
       <h4>Table Loading</h4>
-      <table style={{ border: '1px solid black' }}>
+      <table className="table table-hover border">
         <thead>
           {/* <tr>
             {tableRows.slice(0, rows)?.map((rows, index) => {
