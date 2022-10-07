@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { DropzoneArea } from 'material-ui-dropzone'
-
 import Papa from 'papaparse'
 
 const SimpleDrop = () => {
@@ -11,24 +10,17 @@ const SimpleDrop = () => {
   const [values, setValues] = useState([])
 
   const [delimiter, setDelimiter] = useState(',')
-  console.log(delimiter)
   const [rows, setRows] = useState(4)
   const [globalFile, setGlobalFile] = useState()
 
   const onDelimiterChange = (event) => {
-    console.log(event.target.value)
     setDelimiter(event.target.value)
-    console.log([files])
-    if (globalFile) {
-      //   setIsLoading(true)
-    }
   }
   const PapaParsing = (contents) => {
     Papa.parse(contents, {
       header: true,
       delimiter: delimiter,
       skipEmptyLines: true,
-      // newline: { delimiter },
       complete: function (results) {
         const rowsArray = []
         const valuesArray = []
@@ -67,7 +59,6 @@ const SimpleDrop = () => {
 
   const handleChange = (files) => {
     setFiles({ files: files })
-    // parseFile(files)
   }
   function onRowChange(e) {
     setRows(parseInt(e.target.value))
@@ -88,35 +79,33 @@ const SimpleDrop = () => {
       </div>
       <br />
       <br />
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">
+      <div className="input-group mb-3">
+        <span className="input-group-text" id="basic-addon1">
           Delimeter
         </span>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Delimiter"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
           value={delimiter}
           onChange={onDelimiterChange}
         />
       </div>
 
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">
+      <div className="input-group mb-3">
+        <span className="input-group-text" id="basic-addon1">
           Rows
         </span>
         <input
           type="number"
-          class="form-control"
+          className="form-control"
           placeholder="Enter a number"
           value={rows}
           onChange={onRowChange}
         />
       </div>
 
-      <h4>Table Loading</h4>
+      <h4>Table</h4>
       <table className="table table-striped table-hover table-bordered">
         <thead>
           {/* <tr>
