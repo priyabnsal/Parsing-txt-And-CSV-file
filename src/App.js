@@ -1,14 +1,14 @@
 import './App.css'
 import React from 'react'
 
-import SimpleDrop from './components/SimpleDrop'
+import Main from './components/Main'
 
 function App() {
   return (
     <div className="container">
       <h1>Parsing Txt/CSV file in Table</h1>
       <br />
-      <SimpleDrop />
+      <Main />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import Input from './Input'
 import Table from './Table'
 import DragAndDrop from './DragAndDrop'
 
-const SimpleDrop = () => {
+const Main = () => {
   const [delimiter, setDelimiter] = useState(',')
   const [rows, setRows] = useState(2)
   const tableRef = useRef(null)
@@ -20,10 +20,15 @@ const SimpleDrop = () => {
       <DragAndDrop delimiter={delimiter} tableRef={tableRef} />
       <br />
       <br />
-      <Input delimiter={delimiterHandler} rows={rowHandler} />
+      <Input
+        delimiterValue={delimiterHandler}
+        rowsValue={rowHandler}
+        delimiter={delimiter}
+        rows={rows}
+      />
       <Table ref={tableRef} delimiter={delimiter} rows={rows} />
     </div>
   )
 }
 
-export default SimpleDrop
+export default Main

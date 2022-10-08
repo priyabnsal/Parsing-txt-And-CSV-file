@@ -2,10 +2,10 @@ import React from 'react'
 
 const Input = (props) => {
   const onDelimiterChange = (delimiter) => {
-    props.delimiter(delimiter.target.value)
+    props.delimiterValue(delimiter.target.value)
   }
   function onRowChange(rows) {
-    props.rows(rows.target.value)
+    props.rowsValue(rows.target.value)
   }
   return (
     <div>
@@ -17,6 +17,7 @@ const Input = (props) => {
           type="text"
           className="form-control"
           placeholder="Delimiter"
+          value={props.delimiter}
           onChange={onDelimiterChange}
         />
       </div>
@@ -29,6 +30,7 @@ const Input = (props) => {
           type="number"
           className="form-control"
           placeholder="Enter a number"
+          value={props.rows}
           onChange={onRowChange}
         />
       </div>
