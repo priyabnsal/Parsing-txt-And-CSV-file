@@ -2,10 +2,6 @@ import React from 'react'
 
 const Input = (props) => {
   const onDelimiterChange = (delimiter) => {
-    // if ((delimiter.target.value = '')) {
-    //   delimiter.target.value = ' '
-    // }
-    console.log(delimiter.target.value)
     props.delimiterValue(delimiter.target.value)
   }
   function onRowChange(rows) {
