@@ -25,6 +25,7 @@ const Main = () => {
         rowsValue={rowHandler}
         delimiter={delimiter}
         rows={rows}
+        tableRef={tableRef}
       />
       <Parser ref={tableRef} delimiter={delimiter} rows={rows} />
       <br />

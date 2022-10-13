@@ -1,22 +1,53 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useState,
+  useEffect,
+} from 'react'
 
 const Parser = forwardRef((props, ref) => {
   const [values, setValues] = useState([])
+  const [rows, setRow] = useState([])
   useImperativeHandle(ref, () => ({
     csvToArray(str) {
-      const rows = str.split('\n')
+      if (str === '') {
+        console.log('DEBUG')
+        setValues([])
+        return
+      } else {
+        let row = str.split('\n')
 
+        setRow(row)
+        console.log(row)
+      }
+    },
+  }))
+  useEffect(() => {
+    if (!rows.length === 0) {
+      return
+    } else {
+      newthing()
+    }
+  }, [rows, props.rows, props.delimiter])
+
+  function newthing() {
+    let newRows = rows.slice(0, props.rows)
+    if (newRows.length === 0) {
+      return
+    } else {
       const headers = props.delimiter
         ? [
             ...Array(
               Math.max(
-                ...rows.map((row) => (row.split(props.delimiter) ?? []).length),
+                ...newRows.map(
+                  (row) => (row.split(props.delimiter) ?? []).length,
+                ),
               ),
             ).keys(),
           ]
         : [0]
 
-      const arr = rows.map(function (row) {
+      const arr = newRows.map(function (row) {
         const values = props.delimiter ? row.split(props.delimiter) : [row]
         const el = headers.reduce(function (object, header, index) {
           object[header] = values[index]
@@ -32,9 +63,8 @@ const Parser = forwardRef((props, ref) => {
       })
       setValues(valuesArray)
       return arr
-    },
-  }))
-
+    }
+  }
   return (
     <>
       <h4>Table</h4>
@@ -43,7 +73,7 @@ const Parser = forwardRef((props, ref) => {
           {values.slice(0, props.rows)?.map((value, index) => {
             return (
               <tr key={index}>
-                {value?.map((val, i) => {
+                {value.slice(0, 4)?.map((val, i) => {
                   return <td key={i}>{val}</td>
                 })}
               </tr>
