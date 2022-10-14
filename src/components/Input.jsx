@@ -32,7 +32,7 @@ const Input = (props) => {
           placeholder="Enter a number"
           value={props.rows}
           onChange={onRowChange}
-          min="1"
+          min="0"
         />
       </div>
     </>

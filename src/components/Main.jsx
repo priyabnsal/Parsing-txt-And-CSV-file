@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Input from './Input'
 import Parser from './Parser'
 import DragAndDrop from './DragAndDrop'
+import { csvToArray } from '../utils/parser.util'
 
 const Main = () => {
   const [delimiter, setDelimiter] = useState(',')
   const [rows, setRows] = useState(2)
-  const tableRef = useRef(null)
+  const [fileContent, setFileContent] = useState() //originalFile
+  const [uploaded, setUploaded] = useState(false)
+  const [fileContentArray, setFileContentArray] = useState([]) // newFile
 
   const delimiterHandler = (delimiter) => {
     setDelimiter(delimiter)
@@ -14,10 +17,16 @@ const Main = () => {
   const rowHandler = (rows) => {
     setRows(rows)
   }
+  useEffect(() => {
+    if (!uploaded) return
+    else {
+      setFileContentArray(csvToArray(fileContent, rows, delimiter))
+    }
+  }, [fileContent, delimiter, rows])
 
   return (
     <div>
-      <DragAndDrop delimiter={delimiter} tableRef={tableRef} />
+      <DragAndDrop setUploaded={setUploaded} setFileContent={setFileContent} />
       <br />
       <br />
       <Input
@@ -25,11 +34,12 @@ const Main = () => {
         rowsValue={rowHandler}
         delimiter={delimiter}
         rows={rows}
-        tableRef={tableRef}
       />
-      <Parser ref={tableRef} delimiter={delimiter} rows={rows} />
-      <br />
-      <br />
+      <Parser
+        fileContentArray={fileContentArray}
+        rows={rows}
+        isFileUploaded={uploaded}
+      />
       <br />
       <br />
     </div>
