@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Parsing-txt-And-CSV-file/static/css/main.fc11e0c2.css",
-    "main.js": "/Parsing-txt-And-CSV-file/static/js/main.fa33e4b7.js",
+    "main.css": "/Parsing-txt-And-CSV-file/static/css/main.60e93443.css",
+    "main.js": "/Parsing-txt-And-CSV-file/static/js/main.27ca18bf.js",
     "index.html": "/Parsing-txt-And-CSV-file/index.html",
-    "main.fc11e0c2.css.map": "/Parsing-txt-And-CSV-file/static/css/main.fc11e0c2.css.map",
-    "main.fa33e4b7.js.map": "/Parsing-txt-And-CSV-file/static/js/main.fa33e4b7.js.map"
+    "main.60e93443.css.map": "/Parsing-txt-And-CSV-file/static/css/main.60e93443.css.map",
+    "main.27ca18bf.js.map": "/Parsing-txt-And-CSV-file/static/js/main.27ca18bf.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc11e0c2.css",
-    "static/js/main.fa33e4b7.js"
+    "static/css/main.60e93443.css",
+    "static/js/main.27ca18bf.js"
   ]
 }
