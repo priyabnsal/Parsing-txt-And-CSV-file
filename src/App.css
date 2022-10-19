@@ -33,15 +33,9 @@ h1 {
   background-color: #95dada;
 }
 
-/*
-.box {
-  background-color: var(--box-bg);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: var(--box-shadow);
+table {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 0rem !important;
 }
-
-.header {
-  margin-bottom: 30px;
-  text-align: center;
-} */
