@@ -8,7 +8,7 @@ const Parser = ({ isFileUploaded, fileContentArray, rows }) => {
         <tbody>
           {isFileUploaded &&
             fileContentArray &&
-            fileContentArray.slice(0, rows)?.map((value, index) => {
+            fileContentArray.map((value, index) => {
               return (
                 <tr key={index}>
                   <table className="table table-bordered table-stripped">
